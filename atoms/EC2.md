@@ -8,7 +8,8 @@
 * **Storage Optimized**: High throughput for sequential reads and writes. 
 * Use this website to checkout the EC2 Instance types https://instances.vantage.sh/ #tip 
 * [[CloudWatch]] can monitor CPU, Network and Disk but not Memory Usage. To monitor memory you must install an CloudWatch Agent.
-### EC2 Connection
+
+### EC2 Networking
 
 - [[SG]] is a firewall for EC2. 
 - You can connect to EC2 via [[EC2 Instance Connect]] or [[SSH]] assuming the [[SG]] has been setup.
@@ -30,12 +31,30 @@
 		* Can not be sold at the Reserved Instance Marketplace.
 	* Scheduled Reserved Instances
 		* For regularly scheduled daily, weekly and monthly workload for a specific start time and duration. [more](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-scheduled-instances.html)
-* Savings Plan
-	* Get a discount based on long-term usage (up to 72% - same as RIs)
-	* Commit to billable usage for 1 or 3 years.
-	* Usage beyond the commitment defaults to On-Demand price.
-	* Flexibility: Instance size within family, OS, and tenancy e.g. default, dedicated, host.
-* [[EC2 Spot Instance]] Supports massive discounts up to 90%.
+
+---
+#Question  What is an EC2 Savings Plan?
+*See*: [Savings Plan](https://aws.amazon.com/savingsplans/)
+**Answer**: 
+* Get a discount based on long-term usage (up to 72% - same as RIs)
+* Commit to billable usage for 1 or 3 years.
+* Usage beyond the commitment defaults to On-Demand price.
+* Flexibility: Instance size within family, OS, and tenancy e.g. default, dedicated, host.
+* Limitation: Cannot change the EC2 Family e.g. T, R etc.
+
+---
+#Question  What are EC2 Spot Instances?
+*See*:  [[EC2 Spot Instance]] 
+**Answer**: Supports massive discounts up to 90%. You must stop Spot Requests before terminating instances to avoid new instances to be launched for persistent types.
+
+---
+#Question How are EC2 System Status and Instance Status checks detected and resolved?
+**Answer**: 
+If a system status check fails, AWS will increment the [StatusCheckFailed_System](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/viewing_metrics_with_cloudwatch.html#status-check-metrics) metric. This can be due to power failure, network loss, software issues on the host. Stop EC2, then Start EC2.
+If an instance status check fails, AWS will increment the [StatusCheckFailed_Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/viewing_metrics_with_cloudwatch.html#status-check-metrics) metric. Reboot EC2.
+![[EC2 Status Check Failed Recovery Automation.png| 256]]
+Fig. Automate Recovery of Failed EC2 instance with CloudWatch Alarm and Recover Action
+
 * EC2 Dedicated Hosts
 	* Physical server with EC2 instance capacity.
 	* #UseCase compliance requirements, server-bound software license e.g. per-socket, per-core or BYOL.
@@ -50,7 +69,13 @@
 
 - You can assign an [[ElasticIP]] to your instance. Only one per EC2 instance.
 
-When you launch a new EC2 instance, the EC2 service attempts to place the instance in such a way that all your instances are spread out across underlying hardware to minimize correlated failure. You can use [[Placement Groups]] to influence the placement of a group of interdependent instances to meet the needs of your workload. 
+When you launch a new EC2 instance, the EC2 service attempts to place the instance in such a way that all your instances are spread out across underlying hardware to minimize correlated failure. You can use [[EC2 Placement Groups]] to influence the placement of a group of interdependent instances to meet the needs of your workload. 
+
+---
+
+#Q What are EC2 Burstable instances?
+**See**: [EC2 Burstable](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances-unlimited-mode.html?icmpid=docs_ec2_console)
+**Answer**: These are T2/T3 instances that can use their standard credits or unlimited credits to service bursts of CPU. If the standard credits are exhausted, the CPU comes down from 100% to about 10% utilization even when CPU Stress is running.
 
 ### EC2 Storage Types
 ### Instance Storage
@@ -60,7 +85,7 @@ When you launch a new EC2 instance, the EC2 service attempts to place the instan
 #### File Storage
 - [[EFS]] Elastic File Systems can be used for file base storage. Multiple instances, in fact 100s of instances can use the file storage.
 
-## EC2 Hibernate
+### EC2 Hibernate
 * RAM state is written to a file in the root [[EBS]] volume. The root [EBS](EBS.md) volume must be encrypted. 
 * Running => Hibernate => Hibernation => Start => Running
 * #UseCase long-running processing, saving time to bootup
@@ -68,6 +93,29 @@ When you launch a new EC2 instance, the EC2 service attempts to place the instan
 * Root Volume - must be [EBS](EBS.md), encrypted, not instance store, and large. 
 * 150GB, 60 days limit.
 * From OS pov `uptime` will count time elapsed during hibernation.
+
+### EC2 Termination Protection
+- It is only applicable to CLI and Console
+- Shutdown behavior by default is Stop, but Terminate can be chosen
+- OS shutdown from within the instance will always supersede API and Console Terminal Protection
+
+### EC2  Troubleshooting
+
+- Instance Limit Exceeded
+	- OnDemand or Spot instances has exceeded 384 vCPU. 
+		- Request an instance limit quota increase.
+- Insufficient Instance Capacity
+	- AZ has maxed out it's capacity.
+	- Request slowly or use another AZ.
+- Instance Terminates Immediately
+	- EBS snapshots maybe corrupt
+	- EBS is encrypted and the instance role does not have access to the keys 
+	- Check the EC2 console logs
+- SSH Trouble
+	- Unprotected Private Key ? chmod 400
+	- Connection Timed Out? Networking issue - check SG, NACL, CPU 100%, No public IPv4
+	- Connection closed | Permission denied ? 
+	- Too Many Authentication Errors - incorrect username for SSH
 
 ### Scaling EC2 Horizontally
 - [[ASG | Auto-Scaling Group]] with appropriate launch configurations and scaling policies can be used to scale. #performant 

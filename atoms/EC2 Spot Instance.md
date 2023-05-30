@@ -21,4 +21,4 @@
 	* The spot fleet will try to meet the target capacity with price constraints.
 	* Can have multiple launch pools, so that the fleet can choose. It will stop launching instances based on price constraints.
 	* Automatic Scaling: Target tracking , Step (adjust based on size of alarm breach), scheduled. 
-	* `request` and `maintain` are two types of spot fleets.
+	* `request` and `maintain` are two types of spot fleets. [User Guide](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html)

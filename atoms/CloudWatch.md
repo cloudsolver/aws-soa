@@ -84,6 +84,14 @@ Operational visibility into various workloads.
 | Contributor         | Top-N contributors based on CloudWatch logs                                                   |
 | Application         | SageMaker driven to isolate ongoing issues. EventBridge and [[SSM Parameter Store]] OpsCenter integration         |
 
+### CloudWatch Unified Agent 
+
+#Question: What is procstat plug-in?
+**Answer**: Linux systems have /proc/stat and CW Agent can send this to CW.
+
+#Question : How can CW use SSM Parameter Store?
+**Answer**:  Install CW Unified Agent on [[EC2]] and then upon startup ensure the config is fetched from [[SSM]] parameter store: `sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -c ssm:AmazonCloudWatch-linux -s`
+
 
 ---
 >  **References for CloudWatch**
