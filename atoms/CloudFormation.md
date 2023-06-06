@@ -83,3 +83,7 @@ See:
 Answer: Use the `ZipFile` parameter with inline code.
 ![[CF Lambda ZipFile.png]]
 Fig. Lambda Function embedded with CloudFormation
+
+#Question What does `cfn-init` do?
+See:
+Answer:

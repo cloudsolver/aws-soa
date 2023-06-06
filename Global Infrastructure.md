@@ -6,11 +6,11 @@ AWS Points of Presence (POP)
 	  * 205 Edge Locations
 	  * 11 Regional Caches
 	  * 84 cities across 42 countries
-![AWS Region](AWS%20Region.md)
+See: [AWS Region](AWS%20Region.md)
 
-![AZ](AZ.md)
+See: [AZ](AZ.md)
 
-![Data Center](Data%20Center.md)
+See: [Data Center](Data%20Center.md)
 
 1. [Local Zones](https://aws.amazon.com/about-aws/global-infrastructure/localzones/)
 

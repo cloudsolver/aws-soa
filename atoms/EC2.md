@@ -13,7 +13,7 @@
 
 - [[SG]] is a firewall for EC2. 
 - You can connect to EC2 via [[EC2 Instance Connect]] or [[SSH]] assuming the [[SG]] has been setup.
-- EC2 can assume a role to use other services #BestPractice Do not run `aws configure` into an EC2 instance. [IAM Role](IAM#IAM%20Role) should be used : attach the role to the EC2 instance. Based on the role, you can run AWS commands such as `aws iam list-users` from within the EC2 instance.
+- EC2 can assume a role to use other services #BestPractice Do not run `aws configure` into an EC2 instance. [IAM Role](IAM.md#IAM%20Role) should be used : attach the role to the EC2 instance. Based on the role, you can run AWS commands such as `aws iam list-users` from within the EC2 instance.
 - EC2 instances always get assigned an IPv4 within the CIDR range of the subnet.
 - EC2 instance must have a public IP address in order to connect to the Internet.
 
