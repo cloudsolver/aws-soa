@@ -1,18 +1,24 @@
 Amazon Machine Image is a regional image that instantiates an [[EC2]] instance.
 
 ## AMI Details
-Amazon Machine Image are a customization of EC2 instance.
-- Add your own software, config, OS, monitoring...
+
+#Question What are AMIs used for?
+Answer:
+Amazon Machine Images are a customization of EC2 instances.
+- Add your software, config, OS, monitoring etc.
 - #UseCase pre-configured, faster initialization.
-- AMI are build for specific [region](Region.md). #tip You can copy AMI across Regions.
+- AMIs are built for specific [[Regions]]. You can copy AMI across Regions.
 
 ## AMI Image Builder
 
 #Question What is AMI Image Builder used for and how is compliance supported?
 See: [AMI Image Builder UG](https://docs.aws.amazon.com/imagebuilder/latest/userguide/how-image-builder-works.html)
 Answer: 
-AWS Task Orchestrator and Executor (AWSTOE) is a standalone application used by AWI Image Builder that help   orchestrate complex workflows, modify system configurations, and test your systems with YAML-based script components
-EC2 Image Builder uses Amazon [[Inspector]] to perform assessments for exposure, vulnerabilities, and deviations from best practices and compliance standards.
+- AWS Task Orchestrator and Executor (AWSTOE) is a standalone application used by AWI Image Builder.
+- Helps orchestrate complex workflows
+- Modify system configurations, and 
+- Test your systems with YAML-based script components.
+- EC2 Image Builder uses Amazon [[Inspector]] to assess exposure, vulnerabilities, and deviations from best practices and compliance standards.
 
 ### Use Cases
 #UseCase for creating an AMI
