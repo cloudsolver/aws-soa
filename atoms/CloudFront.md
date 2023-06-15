@@ -44,6 +44,21 @@ Fig. Conceptual Architecture
 Some of these constraints are lifted when using [[Lambda#Lambda@Edge]]
 #UseCase  Managing CORS, CSP, X-Frame-Options, and other Security HTTP Headers, Modifying the CloudFront Cache Key e.g. normalization, Redirecting Traffic Based on Simple Conditions and URL Rewrites and redirection.
 
+---
+#### Cookies and Request Parameter
+#Question How are Cookies and Request Parameters handled by CloudFront?
+See: [Cookies in CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html)
+**Answer**: By default, these are ignored. However a whitelist of cookies and request parameters can be specified, and for each, these will be treated as unique for caching.
+
+---
+
+#### ALB Sticky Session 
+#Question How does CloudFront handle sticky sessions for [[ALB]] ?
+See:
+**Answer**: Whitelist the session cookie name to create uniqueness `AWSALB`. Use TTL for less than the authorization timeout.
+
+---
+
 ### Solution Architectures
 
 #### On-premises server requires a global distribution

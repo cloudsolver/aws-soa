@@ -85,5 +85,9 @@ Answer: Use the `ZipFile` parameter with inline code.
 Fig. Lambda Function embedded with CloudFormation
 
 #Question What does `cfn-init` do?
-See:
-Answer:
+See: [CFN Helper Scripts](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-helper-scripts-reference.html)
+**Answer**: Amazon's Linux AMIs have pre-installed Python helper scripts. 
+- Fetch and parse metadata from CloudFormation
+- Install packages
+- Write files to disk
+- Enable/disable and start/stop services

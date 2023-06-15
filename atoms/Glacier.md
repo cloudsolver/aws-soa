@@ -1,9 +1,28 @@
-### Glacier 
-Low cost option for archival and backup. Cost for object retrieval. It is almost impossible to load data directly into Amazon S3 Glacier without using a lifecycle policy. Possible to directly push to Glacier via [[Storage Gateway]] Tape Volumes.
+A low-cost option for archival and backup. Cost for object retrieval. Loading data directly into Amazon S3 Glacier is almost only possible with a lifecycle policy. 
 
+--- 
+
+#Question Is it possible to push data directly into Glacier?
+**See**: [Glacier CLI](https://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-an-archive-single-op-using-cli.html)
+**Answer**: Yes. Pushing data to Glacier via [[Storage Gateway]] Tape Volumes and CLI is possible but not through the Console. 
+- Archives are items stored up to 40TB
+- Archives live in Glacier Vaults 
+- [[SNS]] notifications can be set up in Vaults.
+
+---
+
+#Question What are Vault Policies?
+See: [Resource Based Glacier Policy](https://docs.aws.amazon.com/amazonglacier/latest/dev/security_iam_resource-based-policy-examples.html)
+**Answer**: 1. Access 2. Lock
+![[assets/Glacier Vault Policy.png| 256]]
+Fig. Glacier Vault Policies
+- Vault Lock ID is provided; once you lock a vault - it can never be changed.
 ### Glacier Select
 - 400% faster, 80% cheaper
 - Retrieve less data by performing server-side filtering as opposed to client-side filtering.
+## 3 Glacier Options
+- Instant, flexible, and deep archive.
+
 ### Instant Retrieval
 - Millisecond retrieval, minimum storage duration 90 days.
 - Quarterly instantaneous retrieval. #UseCase 
@@ -17,7 +36,7 @@ Low cost option for archival and backup. Cost for object retrieval. It is almost
 - Minimum 180 days, retrieval 12 hours
 
 ### Quiz
-#Q A user is trying to create a vault in AWS Glacier. The user want to enable notifications. In which of the below mentioned options can the user enable the notifications from the AWS console?
+#Q A user is trying to create a vault in AWS Glacier. The user wants to enable notifications. In which of the below-mentioned options can the user allow the notifications from the AWS console?
 (a) Glacier does not support the AWS console.
 (b) Archival upload complete
 (c) Vault upload job complete

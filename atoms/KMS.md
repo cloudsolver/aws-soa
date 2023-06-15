@@ -31,13 +31,17 @@ Answer: KMS is monitored by [[CloudWatch]] and its usage tracked by [[CloudTrail
 to decrypt give a decrypt command with the ciphertext and the blob - it will return a decrypted base64 encoded file back.
 `aws kms decrypt --ciphertext-blob fileb://SecretFileEncrypted --output text --query Plaintext ExampleFileDecrypted.base64`
 
-#Q What are the request limits of KMS?
-See:
-Answer: It varies by region. Symmetric CMK varies between 5500, 10K and 30K. RSA and ECC are at 500 and 300 respectively. Exponential backoff, or caching keys can be used when dealing with `Throttling` issues.
+---
 
+#Question  What are the request limits of KMS?
+See: [Throttling KMS](https://docs.aws.amazon.com/kms/latest/developerguide/throttling.html)
+**Answer**: It varies by region. Symmetric CMK varies between 5500, 10K and 30K. RSA and ECC are at 500 and 300 respectively. Exponential backoff, or caching keys can be used when dealing with `Throttling` issues resulting in `Error 400`.
+
+---
 
 ### Cross-Region
-Keys created by the service AWS KMS are never transmitted outside of the AWS Region in which they were created. They can be used in only the Region in which they were created.
+
+Keys created by the service AWS KMS are only transmitted within the AWS Region in which they were made. They can be used only in the Region in which they were created.
 
 Plaintext keys are never written to disk and only ever used in volatile memory of the HSMs for the time needed to perform your requested cryptographic operation. This is true regardless of whether you request AWS KMS to create keys on your behalf, import them into the service, or create them in an AWS [[CloudHSM]] cluster using the custom key store feature. Keys created by the service AWS KMS are never transmitted outside of the AWS Region in which they were created. They can be used in only the Region in which they were created.
 
