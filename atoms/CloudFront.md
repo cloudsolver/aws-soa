@@ -42,7 +42,7 @@ Fig. Conceptual Architecture
 	- The date function returns the same time i.e. time of execution start
 	- Size of code is limited to 10 KB
 Some of these constraints are lifted when using [[Lambda#Lambda@Edge]]
-#UseCase  Managing CORS, CSP, X-Frame-Options, and other Security HTTP Headers, Modifying the CloudFront Cache Key e.g. normalization, Redirecting Traffic Based on Simple Conditions and URL Rewrites and redirection.
+#UseCase  Managing CORS, CSP, X-Frame-Options, and other Security HTTP Headers, Modifying the CloudFront Cache Key e.g., normalization, Redirecting Traffic Based on Simple Conditions and URL Rewrites and redirection.
 
 ---
 #### Cookies and Request Parameter
@@ -63,10 +63,10 @@ See:
 
 #### On-premises server requires a global distribution
 [[Hybrid Cloud Architecture]] with CloudFront is possible. A custom origin can point to an on-premises server and CloudFront is able to cache content for dynamic websites. CloudFront can provide performance optimizations for custom origins even if they are running on on-premises servers. These include persistent TCP connections to the origin, SSL enhancements such as Session tickets and [[OCSP]] stapling. #performant 
-Additionally, connections are routed from the nearest Edge Location to the user across the AWS global network. If the on-premises server is connected via a [[DX|Direct Connect]]  link this can further improve performance.
+Additionally, connections are routed from the nearest Edge Location to the user across the AWS global network. If the on-premises server is connected via a [[DX|Direct Connect]]  link, this can further improve performance.
 
 #Q What is a fast and cost-efficient solution that will update the images immediately without waiting for the object’s expiration date?
-Answer: Cache-Invalidation is time-consuming and not recommended. It is recommended to use different names for assets by version number.
+**Answer**: Use different names for assets by version number e.g. `img_2023083290.jpg`. Cache-Invalidation is time-consuming and not recommended.  
 
 ## References
 
