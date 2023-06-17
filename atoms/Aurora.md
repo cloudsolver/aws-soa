@@ -36,12 +36,15 @@ Writer, Reader and Custom endpoints provide flexibility, scale and high availabi
 4. Recreate the database as an Aurora multi master cluster across the us-east-1 and us-west-2 regions with multiple writers to allow read/write capabilities from all database instances.
 Answer: In order to plan for a Disaster - we do not need to have an active-active with a multi master. Neither can we depend on a read replica and hope that is synchronized up to the minute. Only reasonable option is to recreate the db as a global db.
 
-#Q What should be don to separate read requests from write requests in a multi-AZ Aurora deployment?
+#Q What should be done to separate read requests from write requests in a multi-AZ Aurora deployment?
 1. Create a second database and link to the primary.
 2. Update the application to read from the replica.
 3. Create a read replica and modify the application to use the appropriate endpoint.
 4. Enable read through caching on the database.
 Answer: Aurora replicas are independent endpoints in an Aurora DB cluster, best used for scaling read operations and increasing availability. Up to 15 replicas can be distributed across AZ. In a multi-AZ deployment, there are already replicas so no need to create a read replica. Simply update the application to connect to the reader endpoint for `SELECT` statements. There is one underlying logical volume across writers and readers.
+
+#Question How do you disable Aurora Automatic DB backups?
+Answer: There is no way to prevent automated backups.
 
 ## References
 

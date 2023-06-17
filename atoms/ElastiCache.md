@@ -8,12 +8,13 @@ A managed Redis or Memcached service. #AWSService
 ### Solution Architecture
 - Application will attempt to fetch data from the cache, if `cache miss` it will fetch from RDS, write to cache. #UseCase 
 - Sticky session can be eliminated from ALB by using a distributed cache - ensuring stateless infrastructure.
-### Technology
-![[Redis]]
+### ElastiCache Technology
 
-- MemCached
-	- No HA, non-persistent, no backup and restore.
-	- Multi-node for partitioning #performant 
+#Question Which underlying technologies does ElastiCache support?
+Answer:
+- [[Redis]]
+- [[Memcached]]
+ 
 ### Security
 - IAM Authentication for Redis
 - IAM policies on ElastiCache are only used for AWS API-level security

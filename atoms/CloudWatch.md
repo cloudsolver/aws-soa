@@ -1,17 +1,28 @@
-### Summary of CloudWatch
-System-wide visibility into resource utilization, application performance, and operational health for every service. 
-#AWSService 
-### CloudWatch Details
-- CloudWatch is basically a metrics repository. AWS services puts metrics in cloudwatch, custom metrics can be put in cloudwatch.
-![[CloudWatch Metrics Alarms Notifcations Actions Architecture.png | 512]]
-- High resolution custom metrics and alarms support 1 second metrics
-- Use `PutMetricData --timestamp` with optional `StorageResolution` - 1, 5, 10, 30 second intervals (expensive). Accepts metric data points two weeks in the past and 2 hours in the future.
-- CloudWatch Alarms can take actions such as Terminate EC2 Instance.
-- CloudWatch Unified Agent - is an installable agent that provides a lot more metrics e.g. memory consumption, swap space
+#Question What is CloudWatch?
+It is an #AWSService that provides system-wide visibility into resource utilization, application performance, and operational health for every service. 
+CloudWatch is a metrics repository. Supports Logs, Metrics, and Alarms.
+See: [CW UG](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html)
+
+---
+
+#Question What API can be used for metrics?
+- Use `PutMetricData --timestamp` with optional `StorageResolution` : 1, 5, 10, 30-second intervals (expensive). 
+- Accepts metric data points two weeks in the past and 2 hours in the future.
+- High-resolution custom metrics and alarms support 1-second metrics
+
+![[CloudWatch Metrics Alarms Notifications Actions Architecture.png| 512]]
+Fig. CloudWatch Metrics
+
+--- 
+
+#Question What are CloudWatch Alarms?
+- CloudWatch Alarms can take actions such as Terminate EC2 Instances.
+- CloudWatch Unified Agent - is an installable agent that provides a lot more metrics e.g., memory consumption, swap space
 ---
 
 #Q What are the main concepts of CloudWatch?
-Answer: The following table outlines:
+
+The following table outlines:
 
 | Concept     | Description|
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -28,7 +39,9 @@ Answer: The following table outlines:
 | Alarm       | You can use an _alarm_ to automatically initiate actions on your behalf. An alarm watches a single metric over a specified time period, and performs one or more specified actions, based on the value of the metric relative to a threshold over time. |
 
 ---
-#### CloudWatch Synthetics Canary
+### CloudWatch Canary Synthetics
+
+#Question What is  CloudWatch Synthetics Canary?
 - You can take screenshots of the UI
 - Configurable script that monitors APIs and Apps/Web
 - Write in Node.JS, or Python. Access headless Chrome.
@@ -39,26 +52,38 @@ Answer: The following table outlines:
 	- Visual Monitoring
 	- Canary Recorder
 	- GUI Workflow Builder
+	- 
 ---
+### CloudWatch Integrations
 
-#### CloudWatch Integrations
+#Question Which CloudWatch Integrations are supported?
+
 | Timing         | Integration Type                      |
 | -------------- | ------------------------------------- |
-| Not Real Time  | S3 export is available after 12 hours |
-| Near Real Time | Kinesis Data Firehose                 |
-| Real Time      | Lambda                                |
+| Not Realtime  | S3 export is available after 12 hours |
+| Near- Realtime | Kinesis Data Firehose                 |
+| Realtime      | Lambda                                |
 
-_Subscriptions are filters that are applied to CloudWatch logs._ 
+Table. _Subscriptions are filters that are applied to CloudWatch logs._ 
 
----
-
->**CloudWatch Subscription Architecture**
+**CloudWatch Subscription Architecture**
 ![[CloudWatch Subscription Architecture.png|512]]
 Fig. Subscription Filter is central to CloudWatch integrations
 
-> **CloudWatch Multi-Region Multi-Account**
+Lambda, Kinesis Data Streams, Kinesis Firehose, OpenSearch (Elastic Search), and S3 integrations are supported.
+
+---
+
+### CloudWatch Multi-Region Multi-Account
+
+#Question How does CloudWatch support multiple accounts across multiple regions?
+
+This is done via CloudWatch Subscription Filters.
+
 ![[Cloudwatch Multiaccount Subscription Filter Architecture.png|512]]
 Fig. Subscription Filter across Regions stream to KDS then KDF for near real-time
+
+---
 
 > **Hybrid and EC2 CloudWatch Architecture**
 > Requires a CloudWatch Agent (only logs), new CloudWatch Unified Agent (RAM, CPU, Disk, Network is out of the box for EC2)

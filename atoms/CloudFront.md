@@ -62,11 +62,16 @@ See:
 ### Solution Architectures
 
 #### On-premises server requires a global distribution
-[[Hybrid Cloud Architecture]] with CloudFront is possible. A custom origin can point to an on-premises server and CloudFront is able to cache content for dynamic websites. CloudFront can provide performance optimizations for custom origins even if they are running on on-premises servers. These include persistent TCP connections to the origin, SSL enhancements such as Session tickets and [[OCSP]] stapling. #performant 
-Additionally, connections are routed from the nearest Edge Location to the user across the AWS global network. If the on-premises server is connected via a [[DX|Direct Connect]]  link, this can further improve performance.
+[[Hybrid Cloud Architecture]] with CloudFront is possible. A custom origin can point to an on-premises server, and CloudFront is able to cache content for dynamic websites. CloudFront can provide performance optimizations for custom origins even running on on-premises servers. These include persistent TCP connections to the origin, SSL enhancements such as Session tickets, and [[OCSP]] stapling. #performant 
+Additionally, connections are routed from the nearest Edge Location to the user across the AWS global network. This can further improve performance if the on-premises server is connected via a [[DX|Direct Connect]]  link.
 
 #Q What is a fast and cost-efficient solution that will update the images immediately without waiting for the object’s expiration date?
 **Answer**: Use different names for assets by version number e.g. `img_2023083290.jpg`. Cache-Invalidation is time-consuming and not recommended.  
+
+---
+
+#Question What does TTL of 0 achieve?
+Answer: All requests are directed to the origin. This can be useful for 3-tier Applications that require reduced latency for users because traversal from CloudFront to origin is faster.
 
 ## References
 
