@@ -46,3 +46,7 @@
 5. Implementing data backups and replications.
 6. Implementing policies for data access, life-cycle, and protection.
 7. Rotating encryption keys and renewing certificates.
+
+#Question Penetration Testing is permitted but what is not permitted?
+Route53 and DNS is prohibited.
+[AWS Pen Test](https://aws.amazon.com/security/penetration-testing/)

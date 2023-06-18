@@ -3,7 +3,7 @@ EC2 Autoscaling Groups are Regional Constructs. Supply AMI to ASG to launch inst
 [doc](https://aws.amazon.com/ec2/autoscaling/)
 ### ASG Details
 - Set desired, minimum and maximum capacity.
-- Dynamic Scaling: Tracks [CloudWatch](CloudWatch) and acts when it is in ALARM.
+- Dynamic Scaling: Tracks [CW](CW.md) and acts when it is in ALARM.
 - #WellArchitected For Fault tolerance requires the minimum number of [[EC2]] instances in each [[AZ]] that enables [[Resilient Architectures]] on AWS.
 - EC2 instance launched from the oldest launch configuration is terminated first.
 ![[Autoscaling Policies]]
@@ -28,7 +28,7 @@ A Launch Template is required for an ASG.
 - [ELB](ELB.md) Info
 - Initial Capacity, Min and Max Size.
 - Scaling Policies.
-- [[CloudWatch ]] Alarms can trigger a scaling request to ASG.
+- [[CW]] Alarms can trigger a scaling request to ASG.
 - With launch templates, you can provision capacity across multiple instance types using both **On-Demand Instances** and **Spot Instances** to achieve the desired scale, performance, and cost. Hence this is the correct option.
 
 #### Quiz

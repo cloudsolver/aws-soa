@@ -8,5 +8,5 @@ Amazon OpenSearch is a successor to Amazon ElasticSearch. #AWSService
 * Requires a cluster of instances (not serverless)
 * Does NOT support SQL (uses proprietary query language)
 * Has dashboards out of the box.
-* Data ingress: [[Kinesis]] Firehose, [[IoT]], [[CloudWatch]] logs.
+* Data ingress: [[Kinesis]] Firehose, [[IoT]], [[CW]] logs.
 * Security: [[Cognito]], [[IAM]], [[KMS]] and support [[TLS]]

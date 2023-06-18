@@ -16,7 +16,7 @@ Build loosely coupled event driven architecture at scale with Event Bridge. #AWS
 > Possible to set up a cron job. Also, set up security triggers e.g. notification email when root user logs in to console.
 > (a) Default Event Bus - provided within the AWS account. (b) Custom Event Bus - create a separate event bus, and (c) Partner Event Bus e.g. Data Dog, Zen Desk etc.
 > ![[Source-Destination Event Bridge Architecture.png|512]]
-> Fig. Event Bridge Architecture with [[CloudWatch]]
+> Fig. Event Bridge Architecture with [[CW]]
 > Support for event schema discovery within its Schema Registry feature along with versioning
 > Manage permissions into the Event Bus. #UseCase Aggregate all events into a central bus from all accounts within an organization.
 > ![[AWS events from other account.png]] 

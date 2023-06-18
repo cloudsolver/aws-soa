@@ -7,7 +7,7 @@
 * **Memory Optimized**: High performance, relational and non-relational database, distributed web scale cache stores, In-memory databases optimized for BI, applications performing real-time processing of big unstructured data.
 * **Storage Optimized**: High throughput for sequential reads and writes. 
 * Use this website to checkout the EC2 Instance types https://instances.vantage.sh/ #tip 
-* [[CloudWatch]] can monitor CPU, Network and Disk but not Memory Usage. To monitor memory you must install an CloudWatch Agent.
+* [[CW]] can monitor CPU, Network and Disk but not Memory Usage. To monitor memory you must install an CloudWatch Agent.
 
 ### EC2 Networking
 

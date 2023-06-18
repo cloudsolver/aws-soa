@@ -13,7 +13,19 @@ Centrally manage the lifecycle of secrets. #AWSService Primarily for RDS and API
 ![[Credentials for Services.png|512]]
 Fig. Options for Secrets Manager
 
-#Q How does [[CloudFormation]] leverage Secrets Manager?
+---
+
+### HA for Secrets
+
+#Question How is an HA for secrets accomplished?
+Alternating Users Rotation: Use two secrets - one for the user, the other for the admin. Alternating users rotation is a rotation strategy where Secrets Manager clones the user and then alternates which user's credentials are updated. This strategy is a good choice if you need high availability for your secret, because one of the alternating users has current credentials to the database while the other one is being updated. 
+
+See: 
+- [Alternating Users Rotation](https://docs.aws.amazon.com/secretsmanager/latest/userguide/tutorials_rotation-alternating.html)
+
+---
+
+#Question  How does [[CloudFormation]] leverage Secrets Manager?
 See:
 Answer: `ManageMasterUserPassword: true` - creates a password in SecretsManager and can output an `Arn`. 
 ![[SecretsManager CloudFormation.png]]

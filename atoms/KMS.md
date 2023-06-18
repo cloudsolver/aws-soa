@@ -13,7 +13,7 @@ Key management system is an #AWSService that automates encryption key management
 
 #Q How does**KMS itself achieve Monitoring** ?
 See:
-Answer: KMS is monitored by [[CloudWatch]] and its usage tracked by [[CloudTrail]].
+Answer: KMS is monitored by [[CW]] and its usage is tracked by [[CloudTrail]].
 
 **KMS Seamless Integration**
 >  KMS seamlessly integrates with [[EBS]], [[S3]], [[RDS]], [[SSM Parameter Store]]
@@ -35,7 +35,7 @@ to decrypt give a decrypt command with the ciphertext and the blob - it will ret
 
 #Question  What are the request limits of KMS?
 See: [Throttling KMS](https://docs.aws.amazon.com/kms/latest/developerguide/throttling.html)
-**Answer**: It varies by region. Symmetric CMK varies between 5500, 10K and 30K. RSA and ECC are at 500 and 300 respectively. Exponential backoff, or caching keys can be used when dealing with `Throttling` issues resulting in `Error 400`.
+**Answer**: It varies by region. Symmetric CMK varies between 5500, 10K, and 30K. RSA and ECC are at 500 and 300, respectively. Exponential backoff, or caching keys, can be used when dealing with `Throttling` issues resulting in `Error 400`.
 
 ---
 
@@ -99,6 +99,11 @@ An encrypted snapshot can be moved across accounts (and regions).
 4. Create a volume from the snapshot.
 
 ### Key Policies
+
+#Question What should you use to control access to your KMS CMKs?
+Use KMS Key Policies. Not KMS IAM Policy.
+
+
 - Default Key Policy
 	- Created automatically
 	- Complete access to the key to the creator of the key policy and account root user = Entire AWS account

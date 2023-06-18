@@ -1,13 +1,13 @@
 ### Summary of CloudTrail
-Governance, audit and compliance for your organization. #AWSService 
+Governance, audit, and compliance for your organization. #AWSService 
 ### CloudTrail Details
 - CloudTrail records API calls made from any client. The AWS Management Console, AWS Software Development Kits (SDKs), command line tools, and higher-level AWS services call AWS API operations, so these calls are recorded.
 - Per Region limit of 5 trails. 
 - Each trail is 90 days retention by default. For longer retention move them to [[S3]] and use [[Athena]].
 - CloudTrail default settings **encrypt** the logs.
-- Works with [[Config]] and [[CloudWatch]]
+- Works with [[Config]] and [[CW]]
 - #UseCase if any resource is deleted, always start the investigation with CloudTrail.
-- #UseCase Ensure log files are not tampered. Enable `Log file validation`
+- #UseCase Ensure log files are not tampered. Enable Log file validation.
 
 | Event Type                     | UseCase                                                                                       |
 | ------------------------------ | --------------------------------------------------------------------------------------------- |
@@ -17,10 +17,20 @@ Governance, audit and compliance for your organization. #AWSService
 
 *Note*: In order to log access to S3 bucket access. Data Events will need to be turned on.
 
-> **Notification Solution Architecture on table deletion with CloudTrail**
-> ![[CloudTrail tracks DELETETABLE API call.png|512]] 
-> Fig. DynamoDB table deletion sends an email via [[EventBridge]]
-> EventBridge gets events automatically. 
+### CloudTrail Non-API Events
+
+#Question Which Non-API events does CloudTrail track?
+
+[[Secrets Manager]]
+	- Rotation Started, Succeeded, Failed, Abandoned events
+	- xxSecretVersionDelete events - start, end, cancel
+- [[CW]] Metrics filters can create Alarms.
+- [[Lambda]] function can be used in automation - use the CW logs to debug.
+
+**Notification Solution Architecture on table deletion with CloudTrail**
+ ![[CloudTrail tracks DELETETABLE API call.png|512]] 
+Fig. DynamoDB table deletion sends an email via [[EventBridge]]
+EventBridge gets events automatically. 
 
 **Unmodifiable organization-wide trail Solution Architecture**
 You can create a CloudTrail trail in the management account with the **organization trails** option enabled and this will create the trail in all AWS accounts within the organization.

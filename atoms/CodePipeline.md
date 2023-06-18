@@ -16,7 +16,7 @@ See: [FAQ](https://aws.amazon.com/codepipeline/faqs/?nc=sn&loc=5)
 
 #Q How should troubleshooting be done?
 See:
-Answer: Use [[CloudWatch]]Events and [[EventBridge]] e.g. create events for failed pipelines, cancelled stages. Check console for reason. Also check IAM Service Role permissions. Denied API calls can be checked with [[CloudTrail]]
+Answer: Use [[CW]]Events and [[EventBridge]] e.g. create events for failed pipelines, cancelled stages. Check console for reason. Also check IAM Service Role permissions. Denied API calls can be checked with [[CloudTrail]]
 
 #Q What is the preferred way to trigger CodePipeline?
 See: [Migration to Event Driven](https://docs.aws.amazon.com/codepipeline/latest/userguide/update-change-detection.html)

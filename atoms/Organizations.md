@@ -1,5 +1,5 @@
 ### Summary of Organizations
-Organizations includes account management and consolidated billing capabilities that enable you to better meet the budgetary, security, and compliance needs of your business. #AWSService 
+Organizations include account management and consolidated billing capabilities that enable you to better meet the budgetary, security, and compliance needs of your business. #AWSService 
 ### Organizations Details
 
 > **Advantages**

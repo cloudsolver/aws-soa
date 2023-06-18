@@ -17,6 +17,14 @@ You can use AWS DataSync to migrate data located on premises, at the edge, or in
 - Do not use DataSync if you have bandwidth issues, instead opt for [Snowcone](Snow%20Family.md#Snowcone) that comes pre-installed with the DataSync agent. #BestPractice 
 ![](DataSync%20Agent%20to%20AWS%20DataSync.png)
 - Do not use DataSync if you want to create a hybrid architecture, instead use [[Storage Gateway]]
+
+#Question How does DataSync migrate data within AWS?
+
+It retains metadata and can migrate data in a schedule.
+![[DataSync.png|512]]
+Fig. Any-to-any
+
+
 **References**
 -  https://aws.amazon.com/datasync/faqs/
 - https://tutorialsdojo.com/aws-datasync-vs-storage-gateway/

@@ -18,7 +18,7 @@ Exchange messages via at-least-once delivery, best-effort ordering, low-latency,
 #### Scale EC2 Horizontally
 Queue Depth measured by CloudWatch triggers an alarm that can request [ASG](ASG.md) to add more EC2 instance #performant and #resilient .
 ![[QueueDepthAutoScaling.png]]
-Fig. Auto scale [[EC2]] via [[ASG]] based on [[CloudWatch]] Alarm
+Fig. Auto scale [[EC2]] via [[ASG]] based on [[CW]] Alarm
 The underlying databases should be able to handle the load as well or throttled with limited connections in the pool.  
 #UseCase 
 
