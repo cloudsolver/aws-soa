@@ -52,6 +52,27 @@ HTTP Health Checks are only for public resources. Route 53 checkers are outside 
 		1. Combines the results of multiple health checks into a single health checks
 		2. Parent => Child (256) OR, AND, NOT logic
 
+### Hybrid DNS
+
+#Question How does Route53 resolvers help support hybrid DNS?
+
+- Inbound  Endpoint: On-Prem DNS Resolver routes to Route53 for DNS resolution.
+- Outbound Endpoint: Route53 can conditionally route to your DNS to resolve.
+Supports 10k queries per second.
+
+![[Route53 Hybrid DNS.png]]
+Fig. Inbound Endpoint Route53
+
+#Question How are forwarding rules defined?
+
+- Forwarding Rules: Given a name, forwarding IP.
+- System Rules: Create systemic exceptions to the Forwarding Rules.
+- Auto-Defined System Rules: Defines resolutions automatically.
+*Route53 will select the closest match and execute.*
+
+#Question How can resolver rules be shared across accounts?
+AWS Resource Access Manager can be used to share these rules via [[RAM]]
+
 **References**
 
 1.  https://aws.amazon.com/route53/

@@ -10,3 +10,7 @@ Amazon OpenSearch is a successor to Amazon ElasticSearch. #AWSService
 * Has dashboards out of the box.
 * Data ingress: [[Kinesis]] Firehose, [[IoT]], [[CW]] logs.
 * Security: [[Cognito]], [[IAM]], [[KMS]] and support [[TLS]]
+
+#Question What is a production infrastructure design for OpenSearch?
+
+Use three masters across 3 AZs: one primary and two secondary (medium). Two data nodes per AZ (large).

@@ -1,9 +1,7 @@
-### Summary of IAM
-Identity and Access Management is a core #awsservice  Global Service. #secure 
+Identity and Access Management is a core #AWSService  Global Service. #secure 
 
-### IAM Details
 
- **IAM User**
+### IAM User
 - Features and Restrictions
 	- Users: mapped to a physical user, has a password for AWS Console
 	- Many users can be created. 
@@ -79,7 +77,7 @@ Evaluation Logic: https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_pol
 Answer: The core idea is to differentiate between Role based on Resource based policy. Resource based policies will not scale for 2000 users. IAM will need to be used to grant access to folder level permissions. The other options are tricky. (c) and (e) are the correct options.
 
 
-**IAM Guidelines & Best Practices #bestpractice**
+**IAM Guidelines & Best Practices**
 1. Don't use root.
 2. One physical user 
 3. Assigned users to groups and assign permissions to groups
@@ -90,19 +88,27 @@ Answer: The core idea is to differentiate between Role based on Resource based p
 8. [[CredentialsReport]] for audit.
 9. Use [Access Advisor](Access%20Advisor.md) to review policies and least priviledge adjustments. [[Access Advisor]] shows the services permissions granted to the user and when those services were last accessed. You can use this information to review your policies later.
 10. AWS documented IAM best practices: [Click Here](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)
-11. 
+
 #Q How can all users of AWS account be allowed to have access to their home folder?
 Answer: By using dynamic policies.
 ![[IAM Dynamic Policy.png]]
 
+#### IAM Access Analyzer
+
+#Question How do you configure what is reported in the findings?
+
+Define a Zone of Trust e.g. AWS Organization. Then anything that's outside of the Zone of Trust is reported in the findings.
+
+![[IAM Access Analyzer Zone of Trust.png | 384]]
+Fig. IAM Access Analyzer Findings
+
 #### IAM Identity Center
-- SSO for all accounts in the organization and third party applications
+- SSO for all accounts in the organization and third-party applications
 - Integrates with 3rd party identity providers
 
 ![[Multi-account IAM ID Center Org.png]]
-Fig.
-
-- Enable IAM Identity Center and create a two-way forest trust to connect customer's self-managed Microsoft AD with SSO by using AWS Directory Service.
+Fig. Multi-Account
+- Enable IAM Identity Center and create a two-way forest trust to connect customers' self-managed Microsoft AD with SSO by using AWS Directory Service.
 #### Quiz
 #Q An IAM policy consists of one or more statements. A statement in an IAM policy consists of the following, EXCEPT:
 	1. Effect
