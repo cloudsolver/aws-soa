@@ -1,21 +1,46 @@
-## Summary
 CloudFront is a Content Distribution Network (CDN) Service offered by AWS. #AWSService 
-## CloudFront Details
-As soon as the first byte arrives from the origin, CloudFront begins to forward the object to the user. CloudFront also adds the object to the cache for the next time someone requests it. While this service is useful for content distribution however for UDP, and non-HTTP acceleration such IoT this won't work. Instead, we must use [Global Accelerator](Global%20Accelerator.md) if business has more advanced use-cases such as requiring whitelisting IP addresses, reduced latency and performance.
+
+## Key Features and Limitations
+
+#Question What is the primary mechanism of CF and what are the limitations?
+
+As soon as the first byte arrives from the origin, CloudFront forwards the object to the user. 
+CloudFront also adds the object to the cache the next time someone requests it. 
+While this service is helpful for content distribution, however, for UDP and non-HTTP acceleration such as IoT this won't work. Instead, we must use [[Global Accelerator]]  if the business has more advanced use cases requiring whitelisting IP addresses, reduced latency, and performance.
 
 ![Architecture|384](https://docs.aws.amazon.com/images/AmazonCloudFront/latest/DeveloperGuide/images/how-you-configure-cf.png)
-Fig. Conceptual Architecture
+Fig. CF Conceptual Architecture
+
+### Cache  Optimization
+#Question What are the various ways in which cache can be optimized and reduce origin requests?
+
+- Use Origin Shield. CloudFront cache (edge locations and regional edge caches) can retrieve the object from Origin Shield.
+
+See: [CloudFront Origin Shield](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/origin-shield.html)
+
+#Question How are regional caches and POPs used to optimize cache?
 
 Regional Caches are larger than POPs and can hold less popular objects. This saves a trip to the origin servers and keeps objects cached closest to the customer.
 - Supports 30 GB file size [limits](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cloudfront-limits.html)
-- You can enable geo restrictions in CloudFront. #secure 
-- You can choose **Price Class 100**, viewers in India might experience higher latency than if you choose **Price Class 200**. #CostOptimized 
+- You can enable geo-restrictions in CloudFront. #secure 
+
+#Question What is the impact of the CF Price Class on latency?
+- You can choose **Price Class 100**; viewers in India might experience higher latency than if you choose **Price Class 200**. #CostOptimized 
+
+#Question What is Lambda@Edge and what is it useful for?
 - Lambda@Edge with CloudFront enables a variety of ways to customize the content that CloudFront delivers. #UseCase 
-- Accelerate static site delivery, VOD, field-level encryption are some of the UseCases.
-- CloudFront works with [[WAF]] to filter IPs. CloudFront will terminate the connection and VPC will not see Client IPs - so [[NACL]] is not useful.
+- Some use cases are accelerated static site delivery, VOD, and field-level encryption.
+- Jamstack site folders do not end with /index.html and a function can add this to the request.
+
+### CloudFront Security and Protection
+
+#Question How does CF protect origins and sites?
+
+- CloudFront works with [[WAF]] to filter IPs. CloudFront will terminate the connection, and VPC will not see Client IPs - so [[NACL]] is not useful.
 - DDOS protection due to global footprint, [[Shield | AWS Shield]] integration and [[WAF | Web Application Firewall]]
 - CloudFront can use HTTPS to communicate with an Elastic Load Balancing load balancer, an Amazon EC2 instance, or another custom origin.
 - CloudFront supports [[RTMP]] for Video and Audio streaming. A CloudFront distribution is either a Web Distribution or an RTMP distribution but not both.
+
 ### CloudFront Signed URLs
 - Trusted Key Group (recommended)
 - AWS Account with CloudFront Key Pair (Not recommended)
