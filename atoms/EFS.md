@@ -8,9 +8,17 @@ Encryption at rest using [[KMS]]. #secure
 File-system will scale storage automatically.
 Scale: 1000s of concurrent NFS clients, 10GB/second throughput. #performant 
 Storage: Petabyte-scale NFS
+
 ### Performance Mode
-- General Purpose : latency-sensitive use cases e.g. Web Server, CMS
-- Max I/O: higher latency, high throughput, supports highly parallelized workloads. Very special use cases: media processing or higher latency.
+
+#Question What step should the SysOps administrator perform to resolve the high PercentIOLimit metric on the file system?
+
+Build a new EFS file system that is configured with Max I/O performance mode. Utilize AWS DataSync to migrate data to the newly created EFS file system. 
+
+#Question What are the use cases for general purpose and max i/o file systems?
+- General Purpose: latency-sensitive use cases, e.g. Web Server, CMS
+- Max I/O: higher latency, high throughput, supports highly parallelized workloads. Exceptional use cases: media processing or higher latency.
+- 
 ### Throughput Mode
 - Bursting : 100MiBs, Elastic: scale based on workloads: #UseCase for unpredictable workloads.
 - Provisioned/Enhanced: Set throughput regardless of storage size. 1 GiBs for 1 TB storage.

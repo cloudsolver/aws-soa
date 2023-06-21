@@ -1,11 +1,19 @@
-## Summary
-Elastic Block Storage is an #AWSService attached storage service for EC2; store up to 16 TiB and supply up to 64,000 IOPS.
+Elastic Block Storage is an #AWSService attached storage service for EC2; it stores up to 16 TiB and supplies up to 64,000 IOPS.
 
 
 ## Constraints
-It is locked to an Availability Zone (AZ). The volume and instance must be in the same AZ. In order to move the volume it needs to be snapshot first. Two EBS volumes can be attached to an EC2 instance in the same AZ.
+It is locked to an Availability Zone (AZ). The volume and instance must be in the same AZ.  To move the volume, it needs to be snapshot first. Two EBS volumes can be attached to an EC2 instance in the same AZ.
 
 The root EBS volume is deleted upon termination. #UseCase You can preserve root volume when an instance is terminated but checking `preserve root volume on termination`  
+
+#Question A SysOps Administrator launched an EBS-backed On-Demand EC2 Instance to host a web application. However, the instance always terminates after going into the pending state.
+
+This can happen if the EBS volume:
+	- has reached it's limit
+	- is encrypted and the key is not available to EC2
+
+![[EBS Backed EC2 Instance lifecycle.png]]
+Fig. EBS-backed [EC2] instances
 
 ## EBS Snapshots
 ![EBSSnapshots](EBSSnapshots.md#Summary)
