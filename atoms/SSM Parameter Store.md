@@ -1,6 +1,7 @@
-### Summary of SSM Parameter Store
-Provides secure, hierarchical storage for configuration data management and secrets management. It is a capability of [[SSM]] #secure 
+SSM Parameter Store is a feature of [[SSM]] that provides secure, hierarchical storage for configuration data management and secrets management 
+
 ### SSM Details
+
 A centralized way to manage configuration data.
 Security through [[IAM]]
 Notifications with Amazon [[EventBridge]]

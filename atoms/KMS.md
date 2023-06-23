@@ -1,22 +1,38 @@
-### Summary of KMS
-Key management system is an #AWSService that automates encryption key management. #secure 
+The key management system is an #AWSService that automates encryption key management. #secure 
 
 ### KMS Details
 - [KMS Key Concepts](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html)
 - Centrally manage [[Encryption Concepts|encryption]] keys and define policies. Multi-region keys are not supported.
-- AWS KMS solution uses an _envelope encryption_ strategy with _AWS KMS keys_. ![[Envelope encryption]]
+- AWS KMS solution uses an _envelope encryption_ strategy with _AWS KMS keys_. 
 - Supports Asymmetric and Symmetric keys.
 - AWS rotates keys once every year.
 - AWS Encryption SDK library should be used from within applications.
 - Validate [[Digital Signatures]] and perform signing operations using asymmetric digital keys.
 - Message authenticity and integrity with [[HMAC]] (Hash-based Message Authentication Codes)
 
-#Q How does**KMS itself achieve Monitoring** ?
-See:
-Answer: KMS is monitored by [[CW]] and its usage is tracked by [[CloudTrail]].
+#Question What is Envelope Encryption?
+See: [[Envelope encryption]]
 
-**KMS Seamless Integration**
->  KMS seamlessly integrates with [[EBS]], [[S3]], [[RDS]], [[SSM Parameter Store]]
+#### Key Deletion
+
+#Question What happens when a key is scheduled for deletion?
+- Not possible to delete directly. The default wait time is 30 days; it can be reduced to 7 days.
+- No cryptographic operations are permitted during the `pending delete` state.
+- No KMS key material is rotated during the `pending delete` state.
+
+#Question What needs to be done to delete multi-region keys?
+- You must first delete all replica keys to delete a primary key. If you must delete a primary key from a particular Region without deleting its replica keys, change the primary key to a replica key by updating the primary Region.
+
+Remember that the deletion of keys, once it happens, is final. There is also no way to track where the key has been used.
+
+#### Monitoring
+
+#Question  How does**KMS itself achieve Monitoring** ?
+
+ KMS is monitored by [[CW]], and its usage is tracked by [[CloudTrail]].
+
+#Question What services does KMS Seamless Integrate?
+- KMS seamlessly integrates with [[EBS]], [[S3]], [[RDS]], [[SSM Parameter Store]]
 
 #### Types of KMS Keys
 
