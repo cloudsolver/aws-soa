@@ -5,7 +5,7 @@ SSM Parameter Store is a feature of [[SSM]] that provides secure, hierarchical s
 A centralized way to manage configuration data.
 Security through [[IAM]]
 Notifications with Amazon [[EventBridge]]
-[[CloudFormation]] can use for stacks.
+[[CF]] can use for stacks.
 Only supports symmetric keys #
 Store data such as 
 - passwords, (reference secrets in Secrets Manager)

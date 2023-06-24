@@ -13,9 +13,12 @@ For example,
 - Use the AWS Management Console, API, or CLI to obtain details of what a resource’s configuration looked like at any point in the past. It is a per-Region service.
 - AWS Config will also automatically deliver a configuration history file to the Amazon Simple Storage Service (S3) bucket you specify.
 
+#Question How can tags be standardized?
+Set up the `require-tags` managed rule in AWS Config
+
 > **Config Rules**
 	Specify configuration rules and be notified when configuration changes don't meet the rules.
-	Implement Policies in the Config Rules engine to implement practice.
+	Implement Policies in the Config Rules engine to implement the practice.
 
 **Config Notification Solution**
 AWS Config can send a non-compliance event to [[EventBridge]] which can invoke a [[Lambda]] for remediation. Notifications can be sent via [[SNS]].

@@ -1,17 +1,17 @@
-AWS CloudFormation enables you to use a template file to create and delete a collection of resources together as a single unit (a stack). #AWSService 
+AWS CloudFormation enables you to use a template file to create and delete a collection of resources as a single unit (a stack). #AWSService 
 
 #UseCase for #CostOptimized dev environment.
-- Delete templates at 5pm Friday and recreate at 8am on Monday. This is also a good way to save the environment. #Sustainable 
+- Delete templates at 5pm Friday and recreate at 8am Monday. This is also an excellent way to conserve the environment. #Sustainable #CostOptimized 
 - Declarative programming is supported automatically.
-- Leverage existing templates and also diagrams are created!
+- Leverage existing templates, and also diagrams are created!
 - [[SAM]] sits on top of CF.
-- [[CDK]] creates constructs that compiles with type safety into CloudFormation template.
+- [[CDK]] creates constructs that compile with type safety into the CloudFormation template.
 - [[EB]] sits on top of CF.
 ---
 
 #Q What are the main components of CloudFormation?
 See:
-**Answer**:  Resources, Parameters, Mappings, Outputs, Conditionals, Metadata. Also, References an Functions as helpers.
+**Answer**:  Resources, Parameters, Mappings, Outputs, Conditionals, Metadata. Also, References and Functions as helpers.
 
 | Component           | Description                                                                                 |
 | ------------------- | ------------------------------------------------------------------------------------------- |
@@ -21,23 +21,31 @@ See:
 | Outputs             | References to what was created.                                                             |
 | Conditionals        | Logic                                                                                       |
 | Metadata            | Include arbitrary metadata in JSON or YAML                                                  |
-| References (Helper) | obtain the value of a specific attribute of a resource defined in the same or another stack |
-| Functions (Helper)  | manipulate values or perform calculations based on input parameters                                                                                            |
+| References (Helper) | Obtain the value of a specific attribute of a resource defined in the same or another stack |
+| Functions (Helper)  | Manipulate values or perform calculations based on input parameters                                                                                            |
 
 Table. CloudFormation
 
 ---
 
+#Question How can CloudFormation ensure that the application within EC2 instances are ready to be used?
 
-#Q What are **Parameters**?
-Answer: Parameters enable you to pass values to your templates when you create or update a stack. These values can include information such as instance sizes, key pair names, and database passwords. By using parameters, you can create more flexible and reusable templates that can be used for different environments or use cases.
-`Fn::Ref` or simply `!Ref`. You don't know the value up front.
+A CreationPolicy instructs CloudFormation to wait on an instance until CloudFormation receives the specified number of signals. This policy takes effect only when CloudFormation creates the instance. 
 
-#Q Which section of a CloudFormation template does not allow for conditions?
-Answer: Parameters. This section is a declaration to be referenced later in the template.
+[Blog](https://aws.amazon.com/blogs/devops/use-a-creationpolicy-to-wait-for-on-instance-configurations/)
 
-#Q What are **pseudo-parameters**?
-Answer: Pseudo-parameters, on the other hand, are predefined by CloudFormation and are available for use in all stacks. They provide information about the stack and its environment. Pseudo-parameters cannot be changed and their values are automatically populated by CloudFormation during stack creation or update. Examples of pseudo-parameters include `AWS::Region`, which returns the region in which the stack is being created or updated, and `AWS::StackName`, which returns the name of the stack.
+---
+
+
+#Question  What are CF **Parameters**?
+- Parameters allow you to pass values to your templates when creating or updating a stack. These values can include information such as instance sizes, key pair names, and database passwords. By using parameters, you can create more flexible and reusable templates that can be used for different environments or use cases.
+`Fn::Ref` or simply `!Ref`. You don't know the value upfront.
+
+#Question  Which section of a CloudFormation template does not allow for conditions?
+- Parameters. This section is a declaration to be referenced later in the template.
+
+#Question  What are **pseudo-parameters**?
+Pseudo-parameters are predefined by CloudFormation and are available for use in all stacks. They provide information about the stack and its environment. Pseudo-parameters cannot be changed and their values are automatically populated by CloudFormation during stack creation or update. Examples of pseudo-parameters include `AWS::Region`, which returns the region in which the stack is being created or updated, and `AWS::StackName`, which returns the name of the stack.
 
 ---
 

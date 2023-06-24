@@ -1,4 +1,4 @@
-Serverless Application Model is IaC that sits on top of [[CloudFormation]] and targets an easier way to declare AWS Serverless infrastructure.
+Serverless Application Model is IaC that sits on top of [[CF]] and targets an easier way to declare AWS Serverless infrastructure.
 
 #Q How does SAM assist development teams?
 Answer: SAM can run [[API Gateway]], [[Lambda]] and [[DynamoDB]] locally with SAM CLI and AWS Toolkits. `sam local start api` etc. It can run templates generated with [[CDK]].

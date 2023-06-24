@@ -7,7 +7,7 @@ See: [Features](https://aws.amazon.com/codepipeline/features/?nc=sn&loc=2)
 	Deploy: [[CodeDeploy]], [[Fargate]], [[EC2]], [[EB | Elastic Beanstalk]]. 
 	Build: [[CodeBuild]], Jenkins, CloudBees, TeamCity. 
 	Test: AWS Device Farm, [[CodeBuild]]. 
-	Deploy: [[CodeDeploy]], [[EB]], [[CloudFormation]]
+	Deploy: [[CodeDeploy]], [[EB]], [[CF]]
 
 #Q What is the workflow composed of?
 See: [FAQ](https://aws.amazon.com/codepipeline/faqs/?nc=sn&loc=5)

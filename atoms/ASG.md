@@ -1,9 +1,18 @@
-### Summary of ASG
-EC2 Autoscaling Groups are Regional Constructs. Supply AMI to ASG to launch instances.
+EC2 Autoscaling Groups are regional constructs. Supply AMI to ASG to launch instances.
 [doc](https://aws.amazon.com/ec2/autoscaling/)
 ### ASG Details
-- Set desired, minimum and maximum capacity.
+- Set desired, minimum, and maximum capacity.
 - Dynamic Scaling: Tracks [CW](CW.md) and acts when it is in ALARM.
+
+#Question How can EC2 instances be added or removed to the ASG based on the [[SQS]] queues it is listening to?
+-  The solution is to use a `backlog per instance` metric with the target value being the `acceptable backlog per instance` to maintain.
+- [[SQS]] Queue depth can be checked by ASG to scale out or scale in based on thresholds without [[CW]] alarms.
+
+[EC2 UG](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-using-sqs-queue.html)
+
+![[ASG SQS CW AutoScaling.png]]
+Fig. Metric-driven auto-scaling
+
 - #WellArchitected For Fault tolerance requires the minimum number of [[EC2]] instances in each [[AZ]] that enables [[Resilient Architectures]] on AWS.
 - EC2 instance launched from the oldest launch configuration is terminated first.
 ![[Autoscaling Policies]]
@@ -20,7 +29,7 @@ Recreate an EC2 instance if one is terminated or unhealthy.
 A Launch Template is required for an ASG.
 - [[AMI]] + Instance Type
 - EC2 User Data
-- EBS Volumes
+- [[EBS]] Volumes
 - Security Groups
 - [SSH](SSH.md) Key Pair
 - IAM Roles for EC2 Instances
