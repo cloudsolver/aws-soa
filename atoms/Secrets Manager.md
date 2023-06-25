@@ -25,7 +25,7 @@ See:
 
 ---
 
-#Question  How does [[CF]] leverage Secrets Manager?
+#Question  How does [[Cloud Formation]] leverage Secrets Manager?
 See:
 Answer: `ManageMasterUserPassword: true` - creates a password in SecretsManager and can output an `Arn`. 
 ![[SecretsManager CloudFormation.png]]

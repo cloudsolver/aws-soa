@@ -1,5 +1,7 @@
 ### Placement Group Types
-Cluster, Partition and Spread [[EC2]] [placement groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html) are offered. Placement groups influences placement of group of interdependent instances.
+Cluster, Partition and Spread [[EC2]] [placement groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html) are offered. These are Region and can not be applied across regions. 
+
+Placement groups influence the placement of groups of interdependent EC2 instances spanning [[AZ]]s within a [[Region]].
 ### Cluster 
 - Low-latency for tightly-coupled node-to-node communications highest networking performance. e.g. HPC. Max performance, least reliable.
 - A cluster placement group can span peered virtual private networks ([[VPC]]s) in the same Region.
@@ -18,6 +20,7 @@ Cluster, Partition and Spread [[EC2]] [placement groups](https://docs.aws.amazon
 Fig. Partitions (Racks) for partition-aware workloads
 
 ### Spread
+
 Reliability and reduction of correlated failures by placing instances across distinct underlying hardware. Minimize failure worst performance.
 * Spread placement groups are suitable for mixing instance types or launching instances over time.
 * Limitation: Max 7 instances per AZ. Seven instances can be launched with each in its own rack that has its own network and power source in an [[AZ]]. 

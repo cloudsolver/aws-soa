@@ -13,7 +13,17 @@ Bucket settings to Block Public Access can be set at the account level, and buck
 9. Identity and audit all S3 buckets.
 10. Enable AWS S3 access logging. The access log buckets must be in the same region.
 11. Enable [[CloudTrail]] , AWS [[Config]], [[Macie]] and use [S3 Storage Lens](S3.md#S3%20Storage%20Lens) 
-12. 
+
+### S3 ACLs
+
+#Question  What are S3 ACLs used for?
+
+Coarse-grained permissions for another account. Resource-based ACL that only supports accounts, not users within accounts.
+- FULL CONTROL
+- READ, WRITE
+- READ_ACP, WRITE_ACP (Access Control Policy)
+	- WRITE_ACP allows the accountnt to chance the ACL of the bucket
+![[S3 ACL.png]]
 
 ### S3 Bucket Policies
 The policy below has  a Version, and Statement (array). Each Statement has a statement id, effect, principal, action.

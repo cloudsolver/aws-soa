@@ -84,13 +84,26 @@ See:
 
 ---
 
+#### CloudFront Reports
+
+#Question What information can be gleaned from CloudFront reports for distribution?
+
+The
+1. Usage: Number of requests, data transferred.
+2. Cache: HTTP Status codes, bytes transferred.
+3. Popular: Top 50 objects
+4. Viewer: Devices, locations
+5. Top Referrer: Top 25 referrers
+
+See: [CloudFront Reports](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/reports.html#reports-overview-viewers)
+
 ### Solution Architectures
 
 #### On-premises server requires a global distribution
 [[Hybrid Cloud Architecture]] with CloudFront is possible. A custom origin can point to an on-premises server, and CloudFront is able to cache content for dynamic websites. CloudFront can provide performance optimizations for custom origins even running on on-premises servers. These include persistent TCP connections to the origin, SSL enhancements such as Session tickets, and [[OCSP]] stapling. #performant 
 Additionally, connections are routed from the nearest Edge Location to the user across the AWS global network. This can further improve performance if the on-premises server is connected via a [[DX|Direct Connect]]  link.
 
-#Q What is a fast and cost-efficient solution that will update the images immediately without waiting for the object’s expiration date?
+#Question  What is a fast and cost-efficient solution that will update the images immediately without waiting for the object’s expiration date?
 **Answer**: Use different names for assets by version number e.g. `img_2023083290.jpg`. Cache-Invalidation is time-consuming and not recommended.  
 
 ---

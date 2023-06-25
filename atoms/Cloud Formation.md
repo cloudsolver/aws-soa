@@ -66,8 +66,8 @@ Logical controls that can execute based on logic.
 **Stacks**
 - A single unit that includes all the resources build via the template.
 - Nested Stacks are reused.
-- Cross stacks use Output and is shared.
-- Stack Sets are created by admin accounts- these are across multiple accounts and regions.
+- Cross stacks use Output and are shared.
+- Admin accounts create Stack Sets- these are across multiple accounts and regions.
 **Change Sets**
 While it does not tell us if it will succeed, it will give us a summary of proposed changes that can be generated before updating a running stack. e.g. renaming a database will delete the database (and the data) - good to know. `Fn::And`, 
 ![[cloudformation designer.png]]
@@ -75,10 +75,14 @@ Fig. CloudFormation Designer
 
 I find it quite impractical. JSON is unusable, YAML is readable but it's super clunky.
 
-#Q How is CloudFormation rolled back handled with notifications?
-Answer: CF needs [[SNS]] integration enabled. If CF fails, the stack will delete and the last known successful stack.
+#Question  How is CloudFormation rolled back handled with notifications?
+Answer: CF needs [[SNS]] integration enabled. 
+If CF fails, the stack will delete the resources, and the last known successful stack will be back.
 ![[CF-SNS Integration.png]]
 Fig. Cloud Formation SNS Integration
+
+#Question If the CF rollback process fails, what happens, and what needs to be done?
+If the stack rollback fails, you must fix the issue manually then select `continue update rollback` to finish the rollback and revert to the previous state of the stack and the underlying resources.
 
 ---
 

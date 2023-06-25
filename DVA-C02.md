@@ -78,7 +78,7 @@ Skills set 12- Creating application environments that use approved versions for 
 - Managing environments in individual AWS services (for example, differentiating between development, test, and production in API Gateway.
 
 **Skill set 10**
-- Updating existing IaC templates (for example, AWS SAM templates, [[CF]] templates)  
+- Updating existing IaC templates (for example, AWS SAM templates, [[Cloud Formation]] templates)  
 - Managing application environments by using AWS services  
 - Deploying an application version by using deployment strategies  
 - Committing code to a repository to invoke build, test, and deployment actions  

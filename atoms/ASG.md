@@ -1,17 +1,30 @@
 EC2 Autoscaling Groups are regional constructs. Supply AMI to ASG to launch instances.
 [doc](https://aws.amazon.com/ec2/autoscaling/)
-### ASG Details
-- Set desired, minimum, and maximum capacity.
-- Dynamic Scaling: Tracks [CW](CW.md) and acts when it is in ALARM.
+### Dynamic Scaling with ASG 
+
+#Question How are parameters set to ensure limits?
+Set desired, minimum, and maximum capacity.
+
+#Question How can you terminate an instance from the specified Auto Scaling group without updating the size of the group?
+
+By using the CLI `aws autoscaling terminate-instance-in-auto-scaling-group --instance-id --no-should-decrement-desired-capacity`
 
 #Question How can EC2 instances be added or removed to the ASG based on the [[SQS]] queues it is listening to?
+
+Generally, Dynamic Scaling: Tracks [CW](CW.md) and acts when it is in ALARM.
+
 -  The solution is to use a `backlog per instance` metric with the target value being the `acceptable backlog per instance` to maintain.
 - [[SQS]] Queue depth can be checked by ASG to scale out or scale in based on thresholds without [[CW]] alarms.
 
-[EC2 UG](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-using-sqs-queue.html)
+See: [EC2 UG](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-using-sqs-queue.html)
 
 ![[ASG SQS CW AutoScaling.png]]
 Fig. Metric-driven auto-scaling
+
+#Question What is the life cycle for ASG, and what happens when terminations are paused?
+
+![[ASG Lifecycle.png]]
+Fig. ASG Lifecycle
 
 - #WellArchitected For Fault tolerance requires the minimum number of [[EC2]] instances in each [[AZ]] that enables [[Resilient Architectures]] on AWS.
 - EC2 instance launched from the oldest launch configuration is terminated first.
@@ -20,11 +33,11 @@ Fig. Metric-driven auto-scaling
 - Deleting an ASG terminates EC2 instances
 - ASG can be configured with [[SNS]] to send notifications on scaling events.
 ASG ensures EC2 instances are within a range (minimum, maximum capacity).
-It can scale out EC2 instances to match the load, and scale in when load decreases.
+It can scale out EC2 instances to match the load and scale in when load decreases.
 Automatically registers new instances to a load balancer.
 Recreate an EC2 instance if one is terminated or unhealthy.
 - There is no cost for ASG itself.
-- ASG also supports Lifecycle hooks - that can take a snapshot of an EBS volume if an EC2 instance gets terminated, and restore it to another AZ via another lifecycle hook. [more on Lifecycle Hooks](https://docs.aws.amazon.com/autoscaling/ec2/userguide/lifecycle-hooks.html)
+- ASG also supports Lifecycle hooks - that can take a snapshot of an EBS volume if an EC2 instance gets terminated and restore it to another AZ via another lifecycle hook. [more on Lifecycle Hooks](https://docs.aws.amazon.com/autoscaling/ec2/userguide/lifecycle-hooks.html)
 
 A Launch Template is required for an ASG.
 - [[AMI]] + Instance Type

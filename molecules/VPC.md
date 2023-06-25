@@ -1,4 +1,3 @@
-# Virtual Private Cloud (VPC)
 
 A VPC is a virtual network that closely resembles a traditional network that you'd operate in your own data center. After you create a VPC, you can add subnets. [more on VPC overview](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
 

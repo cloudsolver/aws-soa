@@ -1,6 +1,6 @@
-#Question What is CloudWatch?
-It is an #AWSService that provides system-wide visibility into resource utilization, application performance, and operational health for every service. 
-CloudWatch is a metrics repository. Supports Logs, Metrics, and Alarms.
+CloudWatch is an #AWSService that provides system-wide visibility into resource utilization, application performance, and operational health for every service. 
+
+It is a metrics repository. Supports Logs, Metrics, and Alarms.
 See: [CW UG](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html)
 
 ---
@@ -20,7 +20,7 @@ Fig. CloudWatch Metrics
 - CloudWatch Unified Agent - is an installable agent that provides a lot more metrics e.g., memory consumption, swap space
 ---
 
-#Q What are the main concepts of CloudWatch?
+#Question  What are the main concepts of CloudWatch?
 
 The following table outlines:
 
@@ -82,6 +82,12 @@ This is done via CloudWatch Subscription Filters.
 
 ![[Cloudwatch Multiaccount Subscription Filter Architecture.png|512]]
 Fig. Subscription Filter across Regions stream to KDS then KDF for near real-time
+
+#Question How can CPU utilization metrics from EC2 instances across instances be aggregated?
+
+Detailed Monitoring must be enabled for aggregation.
+Metric math should be used to calculate.
+[CW Metrics Aggregation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/GetSingleMetricAllDimensions.html)
 
 ---
 
