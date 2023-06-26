@@ -8,8 +8,11 @@
 | 1   | Security                         | 26% |
 | 3   | Deployment                       | 24% |
 | 4   | Troubleshooting and Optimization | 18% |
-|     |   ![[AWS Certified Developer Associate Badge.png]]                               |     |
+
+![[AWS Certified Developer Associate Badge.png]]
+  
 ### Development Skills 
+
 **Skill set 1**  
 
 • Creating fault-tolerant and resilient applications in a programming language (for example,  Java, C#, Python, JavaScript, TypeScript, Go)  
