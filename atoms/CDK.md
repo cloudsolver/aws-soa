@@ -1,4 +1,4 @@
-Cloud Development Kit is an open-source software development framework to define cloud infrastructure in code and provision it through AWS [[Cloud Formation]].
+Cloud Development Kit is an open-source software development framework to define cloud infrastructure in code and provision it through AWS [[CloudFormation]].
 
 
 #Q What are Constructs?

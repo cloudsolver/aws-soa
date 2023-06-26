@@ -9,7 +9,7 @@ AWS CloudFormation enables you to use a template file to create and delete a col
 - [[EB]] sits on top of CF.
 ---
 
-#Q What are the main components of CloudFormation?
+#Question  What are the main components of CloudFormation?
 See:
 **Answer**:  Resources, Parameters, Mappings, Outputs, Conditionals, Metadata. Also, References and Functions as helpers.
 
@@ -28,11 +28,19 @@ Table. CloudFormation
 
 ---
 
-#Question How can CloudFormation ensure that the application within EC2 instances are ready to be used?
+#Question How can CloudFormation ensure that the application within EC2 instances is ready to be used?
 
-A CreationPolicy instructs CloudFormation to wait on an instance until CloudFormation receives the specified number of signals. This policy takes effect only when CloudFormation creates the instance. 
+A CreationPolicy instructs CloudFormation to wait on an instance until CloudFormation receives the specified number of signals. This policy takes effect only when CloudFormation creates the model. 
 
 [Blog](https://aws.amazon.com/blogs/devops/use-a-creationpolicy-to-wait-for-on-instance-configurations/)
+
+---
+#Question A CloudFormation has been How does CloudFormation update work?
+
+You don't need to delete the CF stack. Update the existing stack with an upgraded instance type.
+
+![[CloudFormation Update Process.png]]
+Fig. Updates via CloudFormation
 
 ---
 

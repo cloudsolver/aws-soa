@@ -5,6 +5,7 @@
 (b) Connect over VPN
 (c) Connect over Direct Connect
 
+See: [AWS WP Hybrid Connectivity](https://docs.aws.amazon.com/whitepapers/latest/hybrid-connectivity/aws-dx-dxgw-with-vgw-single-region.html)
 
 ### Hybrid Cloud Architecture Details
 
@@ -14,6 +15,8 @@
 
 ![[site-to-site_VPN_API_Gateway_CloudFront_Route53_context.png]]
 Fig. Customer Gateway and VPGW
+
+
 ## Network to AWS VPC
 [[VPC]] connectivity from other clouds or on-prem requires various architectural considerations. [AWS Whitepaper PDF](https://docs.aws.amazon.com/pdfs/whitepapers/latest/aws-vpc-connectivity-options/aws-vpc-connectivity-options.pdf#introduction)
 
