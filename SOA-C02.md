@@ -9,6 +9,7 @@
 
 
 ### Skills Outline
+
 1.1 Implement metrics, alarms, and filters by using AWS monitoring and logging services
 1.2 Remediate issues based on monitoring and availability metrics
 2.1 Implement scalability and elasticity
