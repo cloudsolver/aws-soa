@@ -1,8 +1,9 @@
-## RDS Summary
-Amazon RDS is a managed RDBMS service that supports various relational database engines. RDS supports, single AZ read-replicas for read scalability, Multi-AZ deployments for HA, and cross-region replication for DR.
+
+Amazon RDS is a managed RDBMS #AWSService that supports various relational database engines. RDS supports single AZ read replicas for read scalability, Multi-AZ deployments for HA, and cross-region replication for DR.
 
 
 ### Engines
+
 - PostgreSQL
 - MySQL
 - MariaDB
@@ -11,22 +12,24 @@ Amazon RDS is a managed RDBMS service that supports various relational database 
 - Aurora 
 	- PostgreSQL
 	- MySQL
+
 ### Features
-- Automated provisioning, OS patching.
+- Automated provisioning and OS patching.
 - Continuous backup on gb2 or io1 and Point-in-time restore.
 - Monitoring Dashboards.
 - Read replicas for improved read performance.
-- Multi AZ setup for DR.
-- Maintenance Windows for upgrades.
+- Multi-AZ setup for DR.
+- Maintenance windows for upgrades.
 - Scaling capability vertical or horizontal.
+- RDS Console reports on OS patching process of the RDS instances
 #### Storage Auto Scaling
 - Scale storage automatically so the DB won't run out of free space.
 - Set the `Maximum Storage Threshold`
 - Useful for applications with _unpredictable workloads_.
 - Automatically modify storage:
 	- Free storage is <10% of allocated storage.
-	- Low-storage lasts at least 5 mins.
-	- 6 hours have passed since last modification.
+	- Low storage lasts at least 5 mins.
+	- 6 hours have passed since the last modification.
 ### Constraints
 - No [[SSH]] access to the database engine.
 	- Unless you opt for [[RDS Custom]] where you get access to EC2 instance.
@@ -54,7 +57,10 @@ Amazon RDS is a managed RDBMS service that supports various relational database 
 	- RDS Child Processes
 	- OS Processes
 
-![[RDS Proxy]]
+#### RDS Proxy
+
+#Question How can direct connections from Lambda functions more efficiently managed?
+Use an [[RDS Proxy]] between [[Lambda]] and [[RDS]] instances to reuse connection pooling and not exhaust the database.
 
 ## Quiz
 #Q You need to store long-term backups for your Aurora database for disaster recovery and audit purposes. What do you recommend?

@@ -33,4 +33,4 @@ The gateway pattern is evident in AWS offerings.
 
 ![[VGW DGW TGW.png]]
 Fig. Comparison. [Source](https://www.megaport.com/blog/aws-vgw-vs-dgw-vs-tgw/)
->>>>>>> 4269e823efd1d66f7d89a511cc387cec5418459d
+

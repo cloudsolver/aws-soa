@@ -3,12 +3,12 @@ Data Migration Service sets up a continuous replication from source to target. M
 ![[DMS Continuous Replication.png|512]]
 Fig. Continuous Replication Architecture. SCT on-prem
 
-CDC - Change Data Capture is supported within the AWS EC2 replication instance, SCT is run on-prem. #BestPractice 
+CDC - Change Data Capture is supported within the AWS EC2 replication instance, and SCT is run on-prem. #BestPractice 
 
 SCT - Schema Conversion Tool can transform the database schema e.g. from Oracle to MySQL. You don't need this if the database engine is the same. SCT is installed on-premises.
 
 ### Database Migration
-- RDS to Aurora Migration
+- [[RDS]] to Aurora Migration
 	- MySQL (external)
 		- mysqldump to Aurora. Takes time but no S3.
 		- percona to S3, then S3 import to Aurora. Requires 3rd party tool.
