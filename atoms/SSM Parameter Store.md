@@ -1,6 +1,7 @@
-SSM Parameter Store is a feature of [[SSM]] that provides secure, hierarchical storage for configuration data management and secrets management 
+SSM Parameter Store is part of the Application Management capability of [[SSM]] that provides secure, hierarchical storage for configuration data management and secrets management.
+See: [AWS SSM UG](https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html)
 
-### SSM Details
+### SSM Parameter Store Features
 
 A centralized way to manage configuration data.
 Security through [[IAM]]
@@ -8,7 +9,7 @@ Notifications with Amazon [[EventBridge]]
 [[CloudFormation]] can use for stacks.
 Only supports symmetric keys #
 Store data such as 
-- passwords, (reference secrets in Secrets Manager)
+- passwords (reference secrets in Secrets Manager)
 - database strings, 
 - Amazon Machine Image (AMI) IDs, and 
 - license codes as parameter values. 
@@ -26,8 +27,10 @@ You can retrieve the entire path with `get-parameters-by-path`
 aws ssm get-parameters-by-path --path /parking --recursive --with-decryption
 ```
 ### Parameter Policies
-Advanced parameters supports policies. Once you create an Advanced Parameter - you cannot downgrade it.
-#UseCase How do you create a db credential expires in 90 days and a reminder be sent 15 minutes?
+Advanced parameters support policies. Once you create an Advanced Parameter - you cannot downgrade it.
+
+#Question  How do you create a DB credential that expires in 90 days and a reminder be sent within 15 days?
+
 Create the credential in the parameter store with multiple policies
 ```
 "Type":"Expiration".
@@ -47,7 +50,7 @@ An expiration notification to [[EventBridge]] will be sent by adding the followi
 
 ---
 > **References for SSM**
-> 1. https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html
+> 1. 
 > 2. https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html
 > 
  

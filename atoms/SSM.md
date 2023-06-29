@@ -1,18 +1,39 @@
 ### Summary of Systems Manager
-AWS Systems Manager, aka SSM is the operations hub for your AWS applications and resources and a secure end-to-end management solution for hybrid cloud, and multi-cloud environments that enable secure operations at scale. #AWSService 
+AWS Systems Manager, aka SSM, is the operations hub for your AWS applications and resources and a secure end-to-end management solution for hybrid cloud and multi-cloud environments that enable secure operations at scale. #AWSService 
 
-### Systems Manager Details
+### Systems Manager Capabilities
 
-1. Features [[SSM Parameter Store]] Parameter Store.
-2. Features the ability to use an agent to log in to an [[EC2]] instance without enabling port 22 for [[SSH]] in [[SG | security group]]
-3. Run Command - run scripts on EC2 instances (or on-prem nodes). No need for SSH. Runs through the agent, and command logs are sent to S3 or SNS for status. Integrated with CloudTrail. EventBridge is automated. Run via SSM agent.
+#Question What are the high-level capabilities of SSM?
 
-![[Run Command Architecture.png|512]]
-**Fig. Run Command integration from SSM**
+![[ssm-aws-overview.png]]
+Fig. SSM Capabilities
 
-4. Patch Management - OS, Sec Updates, cross-platform. Scheduled maintenance windows. Compliance reports
-![[Run Command Invocation Architecture.png|512]]
-**Fig. Maintenance Window - batch update for Patch** 
+
+| Application             | Change             | Node                | Operations          |
+| ----------------------- | ------------------ | ------------------- | ------------------- |
+| [[SSM Parameter Store]] | Change Manager     | Compliance          | OpsCenter           |
+| SSM App Config          | Automation         | Fleet               | Incident Management |
+| SSM Application Manager | Change Calendar    | Inventory           | Explorer                    |
+|                         | Maintenance Window | Session Manager     | CloudWatch Dashboard                    |
+|                         |                    | [[SSM Run Command]] |                     |
+|                         |                    | State Manager       |                     |
+|                         |                    | [[SSM Patch Manager]]       |                     |
+|                         |                    | Distributor         |                     |
+|                         |                    | Hybrid Activations  |                     |
+Table. SSM Capabilities
+
+ 
+#### Quick Setup
+
+#Question How can you easily set up SSM best practices for your organization?
+
+SSM Quick Setup simplifies setting up services, including Systems Manager, by automating everyday or recommended tasks.
+
+#### SSM Document
+
+#Question What is 
+SSM document defines the actions that the Systems Manager performs.
+Includes Command documents.  State Manager, Run Command, and Automation runbooks utilize those.  Systems Manager Automation uses them as well.
 
 5. Automation: Run books are SSM docs that can take action on EC2 instances. e.g. snapshots of EBS. Integrates with [[Config]] - apply remediations that match findings.
 
