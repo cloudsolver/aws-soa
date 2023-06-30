@@ -3,16 +3,23 @@ Bucket settings to Block Public Access can be set at the account level, and buck
 ## S3 Security Details
 
 1. Disable ACLs.
-2. S3 should use Bucket Policies - which is a resource based policy.
+2. S3 should use Bucket Policies - which is a resource-based policy.
 3. Review all buckets that have a `*` wildcard on Principal and/or Action.
 4. Use IAM Roles for AWS Services.
-5. Ensure least privilege.
+5. Ensure the least privilege.
 6. Encrypt Data at Rest with SSE or CSE.
-7. WORM with S3 Locks: Retention, Compliance and Legal Holds are supported. There is no retention period for Legal Holds .
 8. Cross-Region Replication and Versioning.
 9. Identity and audit all S3 buckets.
 10. Enable AWS S3 access logging. The access log buckets must be in the same region.
 11. Enable [[CloudTrail]] , AWS [[Config]], [[Macie]] and use [S3 Storage Lens](S3.md#S3%20Storage%20Lens) 
+
+## S3 Compliance, Legal Holds, and Retention
+
+#Question How are retention rules managed for objects in S3?
+
+Use WORM with S3 Locks: Retention, Compliance, and Legal Holds are supported. There is no retention period for Legal Holds.
+A specific version can have the `Retain Until Date` and only after that can it be deleted, unless there is also a Legal Hold on the object.
+[Object Lock UG](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock-overview.html#object-lock-retention-periods)
 
 ### S3 ACLs
 
@@ -22,7 +29,7 @@ Coarse-grained permissions for another account. Resource-based ACL that only sup
 - FULL CONTROL
 - READ, WRITE
 - READ_ACP, WRITE_ACP (Access Control Policy)
-	- WRITE_ACP allows the accountnt to chance the ACL of the bucket
+	- WRITE_ACP allows the account to change the ACL of the bucket
 ![[S3 ACL.png]]
 
 ### S3 Bucket Policies

@@ -1,5 +1,6 @@
-## Summary
 [EBS Snapshots](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html) allow you to take point-in-time incremental [[Snapshots]] of your volume into S3. EBS Snapshot Archive and Fast Snapshot Restores are offered for different restoration SLAs.
+
+#BestPractice detach the volume to do a snapshot. 
 
 ## EBS Snapshot Archive
 Move a snapshot to an `archive tier` is 75% cheaper.
@@ -12,8 +13,6 @@ A Recycle Bin for EBS Snapshots prevents accidental deletes.
 ## Fast Snapshot Restore (FSR)
 - Force full initialization of snapshot to have no latency on the first use.
 - #UseCase . Faster boot times will speed up  VDI environments and allow  Auto Scaling Groups to come online and start processing traffic more quickly, even for large and/or custom AMIs. 
-- The trade off is price for performance.
+- The trade-off is the price for performance.
 
-EBS restoration cannot be done to a size smaller, but you can restore to a larger file size.
-
-## References
+[[EBS]] restoration cannot be done to a size smaller, but you can restore to a larger file size.

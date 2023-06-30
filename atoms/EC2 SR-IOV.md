@@ -1,10 +1,3 @@
-#Q What is SR-IOV?
-See: [EC2 Docs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html)
-Answer:
-[[EC2]] supports Single-Root I/O Virtualization that provides [[EC2 ENA]] except on T2 instances.
-
-### SR-IOV
-
 SR-IOV is a method of device virtualization that provides higher I/O performance and lower CPU utilization when compared to traditional virtualized network interfaces. Enhanced networking provides higher bandwidth, higher packet per second (PPS) performance, and consistently lower inter-instance latencies. There is no additional charge for using enhanced networking. Cluster [[EC2 Placement Groups]] would benefit from utilizing enhanced networking for tightly coupled workloads.
 
 **Elastic Network Adapter (ENA)**

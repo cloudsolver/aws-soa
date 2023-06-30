@@ -41,6 +41,11 @@ Regional Caches are larger than POPs and can hold less popular objects. This sav
 - CloudFront can use HTTPS to communicate with an Elastic Load Balancing load balancer, an Amazon EC2 instance, or another custom origin.
 - CloudFront supports [[RTMP]] for Video and Audio streaming. A CloudFront distribution is either a Web Distribution or an RTMP distribution but not both.
 
+#Question How does CloudFront communicate with S3 Website Endpoint when Users connect to CloudFront with HTTPS?
+
+If your Amazon S3 bucket is configured as a website endpoint, you can't configure CloudFront to use HTTPS to communicate with your origin because Amazon S3 doesn't support HTTPS connections in that configuration.
+See: [AWS DG](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-https-cloudfront-to-s3-origin.html)
+
 ### CloudFront Signed URLs
 - Trusted Key Group (recommended)
 - AWS Account with CloudFront Key Pair (Not recommended)

@@ -9,6 +9,10 @@ A low-cost option for archival and backup. Cost for object retrieval. Loading da
 - Archives live in Glacier Vaults 
 - [[SNS]] notifications can be set up in Vaults.
 
+#Question Is it possible to directly upload to Glacier from Snowball edge devices?
+It is not possible. You must upload to S3 and then use a lifecycle policy to move to Glacier.
+See: [AWS Blog](https://aws.amazon.com/blogs/storage/using-aws-snowball-to-migrate-data-to-amazon-s3-glacier-for-long-term-storage/)
+
 ---
 
 #Question What are Vault Policies?

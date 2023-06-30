@@ -1,10 +1,18 @@
-#Q How to enable enhanced networking?
-See:[EC2 Enhanced Networking Docs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html)
-Answer: [[EC2]] support Enhanced Network in two ways [[EC2 SR-IOV]] (ENA, VF) and [[EFA]].
+#Question When should EC2 Enhanced Networking (ENA) be used? 
 
+To support throughput near or exceeding 20K packets per second (PPS) on the VIF driver - Enhanced networking uses [[EC2 SR-IOV | single root I/O virtualization]] (SR-IOV) to provide high-performance networking capabilities on supported instance types.
+
+
+#Question  How to enable enhanced networking?
+
+[[EC2]] support Enhanced Network in two ways [[EC2 SR-IOV]] (ENA, VF) and [[EFA]].
+
+
+See:[EC2 Enhanced Networking Docs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html)
 
 #### modinfo ena
-On EC2 instances ena is installed however not all types have ena driver
+
+On EC2 instances, ena is installed; however, not all types have an ena driver
 
 ```
 [ec2-user@ip-172-31-9-177 ~]$ modinfo ena
@@ -17,6 +25,7 @@ srcversion:     7B3ACA8992B03F016F1770B
 ```
 
 #### ethtool -i enX0
+
 Driver is vif on EC2 T2
 Note: eth0 is replaced by enX0 on 2023 Linux AMI
 ```

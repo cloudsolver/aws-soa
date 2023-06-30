@@ -58,7 +58,7 @@ Pseudo-parameters are predefined by CloudFormation and are available for use in 
 ---
 
 #Q What are **Mappings** and how do you access them ?
-Answer: This is hard coded reference KV pairs. You know the values up front. Use `!FindInMap [MapName, FirstLevelKey, SecondLevelKey`
+Answer: This is hard-coded reference KV pairs. You know the values up front. Use `!FindInMap [MapName, FirstLevelKey, SecondLevelKey`
 
 ---
 
