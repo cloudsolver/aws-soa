@@ -1,12 +1,14 @@
-- Create and managing a user directory for your application, providing secure user authentication and authorization features out-of-the-box
-- User directory service. Sign-up and sign in to provide authentication for app users.
+- Create and manage a user directory for your application, providing secure user authentication and authorization features out-of-the-box
+- User directory service. Sign-up and sign-in to provide authentication for app users.
 - Move authentication capability from the backend of your application to Cognito.
-- Serverless database for users - supports for MFA, email verification, third party auth e.g. Google auth.
+- Serverless database for users - supports for MFA, email verification, third party auth, e.g. Google auth.
 - Custom Domains must use [[ACM]] from the us-east-1 region.
 - CUP issues JWT Tokens (Base64) = header, payload and signature. The signature can validate the payload integrity.
-- [[ALB#ALB Authentication]] can be used to Authenticate users.
+
+#Question How does Cognito work with API Gateway and ALB to authenticate users?
+They use Cognito User Pools to Authenticate and retrieve a token.
 ![[User Pool Auth Architecture.png|512]]
-Fig. User Auth, Tokenization,  and Integration with [[API Gateway]] and [[ELB#ALB]]
+Fig. User Auth, Tokenization,  and Integration with [[API Gateway]] and [[ALB]]
 
 --- 
 

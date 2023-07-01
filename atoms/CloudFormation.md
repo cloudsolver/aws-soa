@@ -98,11 +98,12 @@ If the stack rollback fails, you must fix the issue manually then select `contin
 Answer: It will not allow you to dynamically or programmatically generate resources. It is all declarative.  Almost all resource types are available, when they are not, you can use AWS Lambda Custom Resources.
 
 ---
-#Q What is the quickest way to deploy a simple lambda function with CloudFormation.
-See:
+#Q What is the quickest way to deploy a simple lambda function with CloudFormation?
 Answer: Use the `ZipFile` parameter with inline code.
 ![[CF Lambda ZipFile.png]]
 Fig. Lambda Function embedded with CloudFormation
+
+---
 
 #Question What does `cfn-init` do?
 See: [CFN Helper Scripts](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-helper-scripts-reference.html)
@@ -111,3 +112,10 @@ See: [CFN Helper Scripts](https://docs.aws.amazon.com/AWSCloudFormation/latest/U
 - Install packages
 - Write files to disk
 - Enable/disable and start/stop services
+
+---
+
+#Q A multi-region deployment partially failed with a stack instance from one region returning a status of "OUTDATED". Why?
+Answer: Because it tried to create a duplicate global resource.
+
+---

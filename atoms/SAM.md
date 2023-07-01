@@ -4,8 +4,7 @@ Serverless Application Model is IaC that sits on top of [[CloudFormation]] and t
 Answer: SAM can run [[API Gateway]], [[Lambda]] and [[DynamoDB]] locally with SAM CLI and AWS Toolkits. `sam local start api` etc. It can run templates generated with [[CDK]].
 
 #Q How does SAM work?
-Answer: SAM will transform to CloudFormation and then it's basically the same. It requires `Resources` and `Transform` sections. `sam build`, `sam package`
- and `sam deploy` commands.
+Answer: SAM will transform to CloudFormation and then it's basically the same. It requires `Resources` and `Transform` sections. `sam build`, `sam package`, and `sam deploy` commands.
  
  ![[SAM Architecture Flow.png]]
 
@@ -15,10 +14,10 @@ Answer: Policy templates e.g. `S3ReadPolicy`, `SQLPollerPolicy`, `DynamoDBCrudPo
 #Q How does SAM update Lambda functions?
 Answer: It natively uses [[CodeDeploy]].
 
-![[SAM-CodeDeploy.png]]
+![[SAM-CodeDeploy.png | 256]]
 
 #Q What is SAR?
-Answer: Serverless Application Repository. Build and publish serverless applications that can be used by organizations. Share with AWS accounts or publicly.
+Answer: Serverless Application Repository. Build and publish serverless applications that organizations can use. Share with AWS accounts or publicly.
 
 #Q What are the two sections in the SAM template that are required?
 See: [Docs](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-specification-template-anatomy.html)

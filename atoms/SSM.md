@@ -1,5 +1,6 @@
 ### Summary of Systems Manager
 AWS Systems Manager, aka SSM, is the operations hub for your AWS applications and resources and a secure end-to-end management solution for hybrid cloud and multi-cloud environments that enable secure operations at scale. #AWSService 
+See: [AWS SSM Home](https://aws.amazon.com/systems-manager/ )
 
 ### Systems Manager Capabilities
 
@@ -31,11 +32,12 @@ SSM Quick Setup simplifies setting up services, including Systems Manager, by au
 
 #### SSM Document
 
-#Question What is 
+#Question What is an SSM Document?
 SSM document defines the actions that the Systems Manager performs.
 Includes Command documents.  State Manager, Run Command, and Automation runbooks utilize those.  Systems Manager Automation uses them as well.
 
-5. Automation: Run books are SSM docs that can take action on EC2 instances. e.g. snapshots of EBS. Integrates with [[Config]] - apply remediations that match findings.
+#Question What are Automation Run Books?
+ Automation: Run books are SSM docs that can take action on EC2 instances. e.g. snapshots of EBS. Integrates with [[Config]] - apply remediations that match findings.
 
 ### Patch Manager versus Run Command
 
@@ -47,9 +49,3 @@ If you need to automate patching and compliance for your instances, you should u
 
 Use the `restricted-ssh` [AWS Config]-managed rule. Create a remediation action using an AWS System Manager **automation** document that revokes ingress rules that allow SSH traffic from the public.
 The **compliance**  is a feature of System Manager that is used to scan your fleet of managed nodes for patch compliance and configuration inconsistencies. 
-
----
-**References for Systems Manager**
-1. https://aws.amazon.com/systems-manager/ 
- 
-*Created on 2023-03-20 09:23*

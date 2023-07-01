@@ -6,7 +6,7 @@ Intelligent Threat detection service fully managed and automated. *GuardDuty ana
 - [[CloudTrail]] event logs - unusual API calls, unauthorized deployments
 - [[VPC]] Flow Logs - unusual internal traffic, IP address
 - [[DNS]] logs - compromised EC2 instances sending encoded data within DNS queries
-- [[Kubernetes]] audit logs - suspicious activities and potential EKS cluster compromises
+- [[EKS|Kubernetes]] audit logs - suspicious activities and potential EKS cluster compromises
 - [[EventBridge]] integration for rules.
 - CryptoCurrency attacks can be detected out-of-the-box.
 ![guard|768](https://d1.awsstatic.com/asses-2023/product-rds.5a9aba06b0a59417010ca652cec78591850548be.png)

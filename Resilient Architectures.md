@@ -5,7 +5,7 @@ Resilient Architectures are resilient when the solution has high availability, f
 **Knowlege**
 1. API creation and management : [[API Gateway]], REST API
 2. AWS managed services with appropriate use cases: AWS Transfer Family, Amazon [[SQS]],[[Secrets Manager]].
-3. [[Caching]] Strategies
+3. [[Cache|Caching]] Strategies
 4. Design principles for microservices: stateless workloads compared with stateful workloads.
 5. Event-driven architectures.
 6. Horizontal scaling and vertical scaling.

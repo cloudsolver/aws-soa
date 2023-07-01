@@ -2,7 +2,3 @@ The **Online Certificate Status Protocol** (**OCSP**) is used for obtaining the 
 
 #UseCase OCSP Stapling improves the connection speed of SSL handshakes by combining two messages into one.
 
-
---
-
-References

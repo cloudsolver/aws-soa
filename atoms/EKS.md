@@ -2,7 +2,7 @@
 Elastic Kubernetes Service is a managed service. The most trusted way to start, run, and scale Kubernetes. #AWSService 
 ### EKS Details
 - EKS supports [[EC2]] if you want to deploy worker nodes or Fargate to deploy serverless containers.
-- Kubernetes is cloud-agnostic.
+- [[Kubernetes]] is cloud-agnostic.
 - #UseCase Company is already running Kubernetes on-premises and wants to migrate to AWS using Kubernetes.
 - Note Types
 	- Managed Node Groups
